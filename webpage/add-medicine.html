@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>medicine</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+
+</head>
+<body>
+
+<div class="container ">
+	<h2>Add medicine</h2>
+	<table class="table">
+    <thead>
+			<tr>
+				<th>Name</th>
+				<th>Time</th>
+				<th>Dose</th>
+				<th>Other</th>
+			</tr>
+		</thead>
+		<tbody>
+			<form id="item">
+				<tr>
+					<td><input id="name" type="text" class="form-control" /></td>
+					<td>
+						<select id="Time" class="form-control">
+							<option value="morning">Morning</option>
+							<option value="noon">Noon</option>
+							<option value="evening">Evening</option>
+							<option value="night">Night</option>
+						</select>
+					</td>
+					<td style="width: 10%;"><input id="dose" type="number" class="form-control"/></td>
+					<td style="width: 15%;"><input id="other" type="text" class="form-control" /></td>
+					<td><button onclick="addList()" type="button" id="btn-add" class="btn btn-primary">Done</button>&nbsp;
+						<button type="reset" class="btn btn-danger">X</button></td>
+				</tr>
+			</form>
+		</tbody>
+</table>
+</div>
+
+
+<div class="container">
+<h2>Details</h2>
+	<table class="table">
+    <thead>
+			<tr>
+				<th>Name</th>
+				<th>Time</th>
+				<th>Dose</th>
+				<th>Other</th>
+			</tr>
+		</thead>
+		<tbody id="products-row">
+		</tbody>
+		</table>
+</div>
+
+  <script  src="./script.js"></script>
+
+</body>
+</html>
