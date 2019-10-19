@@ -15,43 +15,45 @@
     <thead>
 			<tr>
 				<th>Name</th>
-				<th>Time</th>
-				<th>Dose</th>
-				<th>Other</th>
+			
+				<th>Hour </th>
+				<th>Minute</th>
+				
 			</tr>
 		</thead>
 		<tbody>
 			<form id="item">
 				<tr>
 					<td><input id="name" type="text" class="form-control" /></td>
+					<td style="width: 10%;"><input id="hour" type="number" class="form-control"/></td>
+					<td style="width: 10%;"><input id="min" type="number" class="form-control"/></td>
 					<td>
 						<select id="Time" class="form-control">
-							<option value="morning">Morning</option>
-							<option value="noon">Noon</option>
-							<option value="evening">Evening</option>
-							<option value="night">Night</option>
+							<option value="morning">AM</option>
+							<option value="noon">PM</option>
+							
 						</select>
 					</td>
-					<td style="width: 10%;"><input id="dose" type="number" class="form-control"/></td>
-					<td style="width: 15%;"><input id="other" type="text" class="form-control" /></td>
+					
 					<td><button onclick="addList()" type="button" id="btn-add" class="btn btn-primary">Done</button>&nbsp;
-						<button type="reset" class="btn btn-danger">X</button></td>
+						<button type="reset" class="btn btn-danger">Remove</button></td>
 				</tr>
 			</form>
 		</tbody>
 </table>
 </div>
 
-
+<br><br>
 <div class="container">
-<h2>Details</h2>
+<h2><b>Details</b></h2>
 	<table class="table">
     <thead>
 			<tr>
 				<th>Name</th>
-				<th>Time</th>
-				<th>Dose</th>
-				<th>Other</th>
+				
+				<th>Hour</th>
+				<th>Minute</th>
+			
 			</tr>
 		</thead>
 		<tbody id="products-row">
