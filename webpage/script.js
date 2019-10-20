@@ -1,24 +1,25 @@
 var medicine = [];
 
-var add = function (product, quantity, price, category) {
+var add = function (product, hour, min, time) {
 	medicine.push({
 		product: product,
-		quantity: quantity,
-		price: price,
-		category: category
+		hour: hour,
+		min: min,
+		time:time
+	
 	});
 };
 
 var addList = function () {
 	var name 	= 	document.getElementById("name").value;
-	var dose	= 	document.getElementById("dose").value;
-	var other 		= 	document.getElementById("other").value;
+	var hour	= 	document.getElementById("hour").value;
+	var min	= 	document.getElementById("min").value;
 	var select 		= 	document.getElementById("Time");
 	var time 	= 	select.options[select.selectedIndex].text;
 	var listItens = document.getElementById("products-row");
 	
 	var fragment = document.createDocumentFragment();
-	add(name, time, dose, other);
+	add(name, hour, min,time);
 	medicine.forEach(function ( index ) {
 		var tr = document.createElement("tr");
 		for (var i in index) {
