@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>medicine</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+
+</head>
+<body>
+
+<div class="container ">
+	<h2>Add medicine</h2>
+	<table class="table">
+    <thead>
+			<tr>
+				<th>Medicine Name</th>
+
+				<th>Hour </th>
+				<th>Minute</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<form id="item">
+				<tr>
+					<td><input id="name" type="text" class="form-control" required/></td>
+					<td style="width: 10%;"><input id="hour" type="number" class="form-control" required/></td>
+					<td style="width: 10%;"><input id="min" type="number" class="form-control"/ required></td>
+					<td>
+						<select id="Time" class="form-control">
+							<option value="morning">AM</option>
+							<option value="noon">PM</option>
+
+						</select>
+					</td>
+
+					<td><button onclick="addList()" type="button" id="btn-add" class="btn btn-primary">Done</button>&nbsp;
+						<button type="reset" class="btn btn-danger">Remove</button></td>
+				</tr>
+			</form>
+		</tbody>
+</table>
+</div>
+
+<br><br>
+<div class="container">
+<h2><b>Details</b></h2>
+	<table class="table">
+    <thead>
+			<tr>
+				<th>Name</th>
+
+				<th>Hour</th>
+				<th>Minute</th>
+
+			</tr>
+		</thead>
+		<tbody id="products-row">
+		</tbody>
+		</table>
+</div>
+
+  <script>
+
+          var medicine = [];
+
+          var add = function (product, hour, min, time) {
+            medicine.push({
+              product: product,
+              hour: hour,
+              min: min,
+              time:time
+
+            });
+          };
+
+          var addList = function () {
+            var name 	= 	document.getElementById("name").value;
+            var hour	= 	parseInt(document.getElementById("hour").value);
+            var min	= 	parseInt(document.getElementById("min").value);
+            var select 		= 	document.getElementById("Time");
+            var time 	= 	select.options[select.selectedIndex].text;
+            var listItens = document.getElementById("products-row");
+            if(name == "")
+            {
+              alert("Please enter a valid Medicine Name!");
+            }
+            else if(hour < 0 || hour > 12)
+            {
+                  alert("Please enter a valid hour!");
+            }
+            else if(min < 0 || min > 59)
+                alert("Please enter valid minute!");
+            else{
+            var fragment = document.createDocumentFragment();
+              add(name, hour, min,time);
+            medicine.forEach(function ( index ) {
+              var tr = document.createElement("tr");
+              for (var i in index) {
+                var td = document.createElement("td");
+                td.textContent = index[i];
+                tr.appendChild(td);
+              };
+              fragment.appendChild(tr);
+              listItens.appendChild(fragment);
+            });
+            medicine = [];
+          }
+          }
+
+
+  </script>
+
+</body>
+</html>
