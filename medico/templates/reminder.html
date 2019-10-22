@@ -8,18 +8,17 @@
 
 
 
-{% block create_form %}
-    <form id="item" method="POST"> {% csrf_token %}
-    <tr>
-        <td><input id="name" name="name" type="text" class="form-control" required/></td>
-        <td style="width: 10%;"><input id="hour" name="hour"  type="time" class="form-control"  required/></td>
-        
 
-        <td style="width: 10%;"><input id="repeat" name="repeat" type="number" class="form-control"/ value="14" max="30" min="0" required></td>
 
-        <td><button onclick="addList()" type="submit" id="btn-add" class="btn btn-primary">Create</button>&nbsp;
-            <button type="reset" class="btn btn-danger">Reset</button></td>
-    </tr>
-</form>
+{% block reminder_list %}
+   
+    {% for item in med_list %}
+        <tr>
+            <td> {{item.name}}<td>
+            <td>{{item.hour}}<td>
+            <td>{{item.repeat}} days<td>
+        </tr>
+    {% endfor %}
+ 
 
-{% endblock create_form %}
+{% endblock reminder_list %}

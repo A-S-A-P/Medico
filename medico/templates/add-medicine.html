@@ -23,9 +23,18 @@
 			</tr>
 		</thead>
 		<tbody>
-    {% block create_form %}
-    
-    {% endblock create_form %}
+    <form id="item" method="POST"> {% csrf_token %}
+    <tr>
+        <td><input id="name" name="name" type="text" class="form-control" required/></td>
+        <td style="width: 10%;"><input id="hour" name="hour"  type="time" class="form-control"  required/></td>
+        
+
+        <td style="width: 10%;"><input id="repeat" name="repeat" type="number" class="form-control"/ value="14" max="30" min="0" required></td>
+
+        <td><button onclick="addList()" type="submit" id="btn-add" class="btn btn-primary">Create</button>&nbsp;
+            <button type="reset" class="btn btn-danger">Reset</button></td>
+    </tr>
+</form>
 
       </tbody>
   </table>
@@ -44,7 +53,7 @@
 					<td style="width:350px;"><input id="del_name"  type="text" class="form-control" required/></td>
 
 
-					<td><button onclick="deleteList()" type="button" id="btn-add" class="btn btn-primary">Delete</button>&nbsp;
+					<td><button onclick="deleteList()" type="submit" id="btn-add" class="btn btn-primary">Delete</button>&nbsp;
 						<button type="reset" class="btn btn-danger">Reset</button></td>
 				</tr>
 			</form>

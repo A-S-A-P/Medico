@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .forms import ReminderForm, ReminderDBForm
 from .models import ReminderDB
 from django.contrib.auth.decorators import login_required
@@ -14,8 +14,14 @@ def reminder_view(request):
         obj.user = request.user
         obj.save()
 
+    
+    Med_list_query = ReminderDB.objects.filter(user=request.user)
+    
+    
+
     context = {
-        "user_id": "Sandy",
-        "form": form
+        "user_id": request.user.first_name,
+        "form": form,
+        "med_list": Med_list_query
         }
     return render(request, "reminder.html", context)
