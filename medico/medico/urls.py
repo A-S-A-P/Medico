@@ -16,8 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from .views import home_view
+from reminder.views import (
+    reminder_view
+
+)
 
 urlpatterns = [
     path('', home_view),
     path('admin/', admin.site.urls),
+    path('reminder/', reminder_view),
 ]

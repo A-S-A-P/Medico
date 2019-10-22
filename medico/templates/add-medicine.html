@@ -10,23 +10,24 @@
 <body>
 
 <div class="container ">
-	<h2>Add medicine</h2>
-	<table class="table">
+  <h2>Welcome {% block id %} {% endblock %} - Add your medicine reminder</h2>
+	<table class="table" id= "create">
     <thead>
 			<tr>
 				<th>Medicine Name</th>
 
 				<th>Hour </th>
 				<th>Minute</th>
-
+        <th>AM/PM</th>
+        <th>Repeat for how many days?</th>
 			</tr>
 		</thead>
 		<tbody>
 			<form id="item">
 				<tr>
 					<td><input id="name" type="text" class="form-control" required/></td>
-					<td style="width: 10%;"><input id="hour" type="number" class="form-control" required/></td>
-					<td style="width: 10%;"><input id="min" type="number" class="form-control"/ required></td>
+					<td style="width: 10%;"><input id="hour" type="number" class="form-control" min="1" max="12" required/></td>
+					<td style="width: 10%;"><input id="min" type="number" class="form-control"/ min="0" max="60" required></td>
 					<td>
 						<select id="Time" class="form-control">
 							<option value="morning">AM</option>
@@ -34,13 +35,37 @@
 
 						</select>
 					</td>
+          <td style="width: 10%;"><input id="repeat" type="number" class="form-control"/ value="14" required></td>
 
-					<td><button onclick="addList()" type="button" id="btn-add" class="btn btn-primary">Done</button>&nbsp;
-						<button type="reset" class="btn btn-danger">Remove</button></td>
+					<td><button onclick="addList()" type="button" id="btn-add" class="btn btn-primary">Create</button>&nbsp;
+						<button type="reset" class="btn btn-danger">Reset</button></td>
 				</tr>
 			</form>
-		</tbody>
-</table>
+
+      </tbody>
+  </table>
+
+	<table class="table" id= "delete">
+    <thead>
+			<tr>
+				<th>Delete Medicine</th>
+			</tr>
+		</thead>
+		<tbody>
+			<form id="item">
+				<tr>
+					<td style="width:350px;"><input id="del_name"  type="text" class="form-control" required/></td>
+
+
+					<td><button onclick="deleteList()" type="button" id="btn-add" class="btn btn-primary">Delete</button>&nbsp;
+						<button type="reset" class="btn btn-danger">Reset</button></td>
+				</tr>
+			</form>
+
+      </tbody>
+  </table>
+
+
 </div>
 
 <br><br>
@@ -53,7 +78,8 @@
 
 				<th>Hour</th>
 				<th>Minute</th>
-
+        <th>AM/PM </th>
+        <th>Repeat</th>
 			</tr>
 		</thead>
 		<tbody id="products-row">
@@ -65,13 +91,13 @@
 
           var medicine = [];
 
-          var add = function (product, hour, min, time) {
+          var add = function (product, hour, min, time, repeat) {
             medicine.push({
               product: product,
               hour: hour,
               min: min,
-              time:time
-
+              time:time,
+              repeat:repeat + " more days"
             });
           };
 
@@ -81,8 +107,13 @@
             var min	= 	parseInt(document.getElementById("min").value);
             var select 		= 	document.getElementById("Time");
             var time 	= 	select.options[select.selectedIndex].text;
+            var repeat = parseInt(document.getElementById("repeat").value);
             var listItens = document.getElementById("products-row");
             if(name == "")
+            {
+              alert("Please enter a valid Medicine Name!");
+            }
+            else if(hour == "" || min == "" || repeat == "")
             {
               alert("Please enter a valid Medicine Name!");
             }
@@ -94,7 +125,7 @@
                 alert("Please enter valid minute!");
             else{
             var fragment = document.createDocumentFragment();
-              add(name, hour, min,time);
+              add(name, hour, min,time, repeat );
             medicine.forEach(function ( index ) {
               var tr = document.createElement("tr");
               for (var i in index) {
