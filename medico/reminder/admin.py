@@ -2,6 +2,6 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Reminder
+from .models import ReminderDB
 
-admin.site.register(Reminder)
+admin.site.register(ReminderDB)
