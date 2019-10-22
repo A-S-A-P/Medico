@@ -10,11 +10,12 @@
 <body>
 
 <div class="container " >
-  <h2>Welcome {% block id %} {% endblock %} - Add your medicine reminder</h2>
+  <h2>Welcome {% block id %}User{% endblock %} - Add your medicine reminder</h2>
 	<table class="table" id= "create">
     <thead>
 			<tr>
-				<th>Medicine Name</th>
+				<th><h3>Add Medicine</h3>
+         <br>Medicine Name</th>
 
 				<th>Time (24-hour Format) </th>
 
@@ -22,18 +23,9 @@
 			</tr>
 		</thead>
 		<tbody>
-			<form id="item">
-				<tr>
-					<td><input id="name" type="text" class="form-control" required/></td>
-					<td style="width: 10%;"><input id="hour" type="time" class="form-control"  required/></td>
-					
-
-          <td style="width: 10%;"><input id="repeat" type="number" class="form-control"/ value="14" required></td>
-
-					<td><button onclick="addList()" type="button" id="btn-add" class="btn btn-primary">Create</button>&nbsp;
-						<button type="reset" class="btn btn-danger">Reset</button></td>
-				</tr>
-			</form>
+    {% block create_form %}
+    
+    {% endblock create_form %}
 
       </tbody>
   </table>
@@ -41,7 +33,9 @@
 	<table class="table" id= "delete">
     <thead>
 			<tr>
-				<th>Delete Medicine</th>
+				<th><h3> Delete Medicine</h3> <br>
+        Medicine Name
+         </th>
 			</tr>
 		</thead>
 		<tbody>
@@ -75,6 +69,9 @@
 			</tr>
 		</thead>
 		<tbody id="products-row">
+    {% block reminder_list %}
+
+    {% endblock reminder_list %}
 		</tbody>
 		</table>
 </div>
@@ -100,14 +97,17 @@
             if(name == "")
             {
               alert("Please enter a valid Medicine Name!");
+              return false;
             }
             else if(hour == "")
             {
               alert("Please enter valid time!");
+              return false;
             }
-            else if(repeat == "")
+            else if(repeat == "" || repeat < 1 || repeat > 30)
             {
               alert("Please enter valid days to repeat!");
+              return false;
             }
             else{
             var fragment = document.createDocumentFragment();
