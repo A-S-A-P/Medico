@@ -9,16 +9,15 @@
 </head>
 <body>
 
-<div class="container ">
+<div class="container " >
   <h2>Welcome {% block id %} {% endblock %} - Add your medicine reminder</h2>
 	<table class="table" id= "create">
     <thead>
 			<tr>
 				<th>Medicine Name</th>
 
-				<th>Hour </th>
-				<th>Minute</th>
-        <th>AM/PM</th>
+				<th>Time (24-hour Format) </th>
+
         <th>Repeat for how many days?</th>
 			</tr>
 		</thead>
@@ -26,15 +25,9 @@
 			<form id="item">
 				<tr>
 					<td><input id="name" type="text" class="form-control" required/></td>
-					<td style="width: 10%;"><input id="hour" type="number" class="form-control" min="1" max="12" required/></td>
-					<td style="width: 10%;"><input id="min" type="number" class="form-control"/ min="0" max="60" required></td>
-					<td>
-						<select id="Time" class="form-control">
-							<option value="morning">AM</option>
-							<option value="noon">PM</option>
+					<td style="width: 10%;"><input id="hour" type="time" class="form-control"  required/></td>
+					
 
-						</select>
-					</td>
           <td style="width: 10%;"><input id="repeat" type="number" class="form-control"/ value="14" required></td>
 
 					<td><button onclick="addList()" type="button" id="btn-add" class="btn btn-primary">Create</button>&nbsp;
@@ -74,11 +67,10 @@
 	<table class="table">
     <thead>
 			<tr>
-				<th>Name</th>
+				<th style="width: 60%;">Name</th>
 
-				<th>Hour</th>
-				<th>Minute</th>
-        <th>AM/PM </th>
+				<th>Time</th>
+
         <th>Repeat</th>
 			</tr>
 		</thead>
@@ -91,41 +83,35 @@
 
           var medicine = [];
 
-          var add = function (product, hour, min, time, repeat) {
+          var add = function (product, hour, repeat) {
             medicine.push({
               product: product,
               hour: hour,
-              min: min,
-              time:time,
               repeat:repeat + " more days"
             });
           };
 
           var addList = function () {
             var name 	= 	document.getElementById("name").value;
-            var hour	= 	parseInt(document.getElementById("hour").value);
-            var min	= 	parseInt(document.getElementById("min").value);
-            var select 		= 	document.getElementById("Time");
-            var time 	= 	select.options[select.selectedIndex].text;
+            var hour	= 	document.getElementById("hour").value;
+            
             var repeat = parseInt(document.getElementById("repeat").value);
             var listItens = document.getElementById("products-row");
             if(name == "")
             {
               alert("Please enter a valid Medicine Name!");
             }
-            else if(hour == "" || min == "" || repeat == "")
+            else if(hour == "")
             {
-              alert("Please enter a valid Medicine Name!");
+              alert("Please enter valid time!");
             }
-            else if(hour < 0 || hour > 12)
+            else if(repeat == "")
             {
-                  alert("Please enter a valid hour!");
+              alert("Please enter valid days to repeat!");
             }
-            else if(min < 0 || min > 59)
-                alert("Please enter valid minute!");
             else{
             var fragment = document.createDocumentFragment();
-              add(name, hour, min,time, repeat );
+              add(name, hour, repeat );
             medicine.forEach(function ( index ) {
               var tr = document.createElement("tr");
               for (var i in index) {
