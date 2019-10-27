@@ -1,5 +1,5 @@
 from django import forms
-from .models import ReminderDB
+from .models import ReminderDB, Profile
 
 class ReminderForm(forms.Form):
     name = forms.CharField()
@@ -14,4 +14,11 @@ class ReminderDBForm(forms.ModelForm):
             'name', 
             'hour',
             'repeat'
+        ]
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = [
+            'phone'
         ]

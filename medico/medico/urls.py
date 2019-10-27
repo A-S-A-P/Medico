@@ -17,11 +17,20 @@ from django.contrib import admin
 from django.urls import path
 from django.contrib.auth import views as auth_views
 
-from .views import home_view, login_view, register_view, logout_view
+from .views import (
+    home_view, 
+    login_view,
+    register_view, 
+    logout_view,
+    
+    )
 from reminder.views import (
-    reminder_view
+    reminder_view,
+    register_phone_view
 
 )
+
+from reminder.tasks import startup
 
 urlpatterns = [
     path('', home_view),
@@ -29,5 +38,9 @@ urlpatterns = [
     path('reminder/', reminder_view),
     path('login/', login_view),
     path('register/', register_view),
+    path('phone/', register_phone_view),
     path('logout/', logout_view),
 ]
+
+
+startup()
