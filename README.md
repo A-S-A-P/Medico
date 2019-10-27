@@ -2,6 +2,9 @@
 A web service to remind you to take your medicine (Phone call)
 ```
 git clone https://github.com/A-S-A-P/Medico.git
+
+git branch API
+
 ```
 ## Front-end: Put in /templates folder
 
