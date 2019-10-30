@@ -86,7 +86,7 @@ def startup():
     reminders = ReminderDB.objects.all()
 
     for item in reminders:
-        print(item.hour.minute, " and ", item.hour.hour)
+        
         print(item.id)
         print("Time:", item.hour.hour, " : ", item.hour.minute)
         current_time =datetime.today()
@@ -96,9 +96,9 @@ def startup():
         else:
             delta_t = reminder_time - current_time 
         secs = delta_t.total_seconds()
-        print("Executing in tminus: ", secs, " hours:", secs/3600)
+        print("Executing in tminus: ", secs, "or, hours:", secs/3600)
         t = Timer(secs, schedule_reminder, [item])
         t.start()
 
         #schedule_reminder(item)
-        print("Reminder set for ", item.id)
+        print("Reminder set for ", item.id, item.name)
