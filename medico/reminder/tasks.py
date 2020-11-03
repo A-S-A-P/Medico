@@ -12,8 +12,8 @@ from threading import Timer
 
 # Uses credentials from the TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN
 # environment variables
-account_sid = "AC5aac77251da6c5ad23ae623b25d0489f"
-auth_token = "a7811229f8225dc01f6d6e046cf14727"
+account_sid = "INSERT ENV VARIABLE ID HERE"
+auth_token = "INSERT ENV VARIABLE TOKEN HERE"
 client = Client(account_sid, auth_token)
 
 
