@@ -21,26 +21,59 @@ html {
   position: relative;
   margin: auto;
   box-shadow: 2px 10px 40px rgba(22, 20, 19, 0.4);
-  border-radius: 10px;
+  border-radius: 5em;
   margin-top: 50px;
 }
 
+.title{
+  font-size: 60px;
+  color:#212529;
+  font-family: 'Roboto', sans-serif;
+}
 .col-sm-5 {
+  font-size: 20px;
   height: 100% !important;
   padding: 4%;
   word-wrap: break-word;
 }
 .col-sm-6 {
-  background-color: #e03131;
-
+  background-color: #e09e9e;
+  border-radius: 5em 0em 0em 5em;
 }
 h1 {
   padding: 20%;
 }
 .text{
     text-decoration: none !important;
-    font-size: 25px;
+    font-size: 20px;
+   
 }
+
+@media only screen and (max-width: 768px) {
+
+  body{
+    font-size: 0.7em;
+  
+  }
+
+.col-sm-5 {
+
+  padding: 8%;
+  word-wrap: break-word;
+  padding-bottom: 70px;
+}
+
+    .title{
+    font-size: 42px;
+    color:#212529;
+    font-family: 'Roboto', sans-serif;
+  }
+  .col-sm-6 {
+    background-color: #ddc2f7;
+    border-radius: 5em 5em 0em 0em;
+}
+}
+
       </style>
 
   </head>
@@ -51,8 +84,8 @@ h1 {
   <div class="col-sm-6">
      <div class="sign-in" id="sign-in">
        <br>
-      <h1 style="font-size: 60px;color:#212529;font-family: 'Roboto', sans-serif;">Medico </h1>
-      <p style="font-size: 20px;">The reminder app that calls you to take your medication!
+      <h1 class="title">Medico </h1>
+      <p style="font-size: 20px; padding-left: 42px;">The reminder app that calls you to take your medication!
        </p>
      <br><br><br>
     </div>
@@ -60,13 +93,14 @@ h1 {
   <div class="col-sm-5">
     <br>
       {% if user.is_authenticated %}
-        <a href="logout" class="text" > {{ user.first_name }} Logout! </a><br><br><br>
+      Logged in as: {{ user.first_name }} <br><br>
+        <a href="logout" class="text" > Logout! </a><br><br><br>
       {% else %}
        <a href="register" class="text"> Click here to register! </a><br><br><br>
        <a href="login" class="text" > Click here to login! </a><br><br><br>
 
       {% endif %}
-      <a href="reminder" class="text"> Click here to make reminder! </a>
+      <a href="reminder"  class="text"> Click here to make reminder! </a>
     </div>
 
 </div>
