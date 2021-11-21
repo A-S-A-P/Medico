@@ -1,11 +1,16 @@
 # Medico
-A web service to remind you to take your medicine (Phone call)
+A web service to remind you to take your medicine with a phone call!
 
 ## About
 
 This is a simple web app that can help schedule phone calls to remind you to take a particular medicine. You input your phone number and timings and it will call you and a robotic voice will remind you to take it on time.
-
 This is done using the Twilio phone call API and Cronjobs.
+
+## Why?
+
+The usecase is for elders who might not own smartphones so they cannot use the regular apps. A descendant can visit our website and schedule the medicine for them without the elder having to fiddle with technology.
+
+
 
 ## Installation Process
 	
