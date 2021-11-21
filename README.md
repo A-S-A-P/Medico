@@ -26,7 +26,6 @@ This is done using the Twilio phone call API and Cronjobs.
 
 
 ![alt text](https://github.com/A-S-A-P/Medico/blob/master/medico/Project%20Images/Screenshot_2.png?raw=true)
-https://github.com/A-S-A-P/Medico/blob/master/medico/Project%20Images/Screenshot_2.png
 
 
 
